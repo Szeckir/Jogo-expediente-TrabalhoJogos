@@ -1,7 +1,0 @@
-[gd_scene format=3]
-
-[ext_resource type="Script" path="res://scripts/minimapa.gd" id="1_minimapa"]
-
-[node name="Minimapa" type="Control"]
-custom_minimum_size = Vector2(276.0, 240.0)
-script = ExtResource("1_minimapa")
