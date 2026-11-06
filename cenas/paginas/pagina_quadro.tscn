@@ -1,0 +1,150 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_quadro.gd" id="1_pagina_quadro"]
+
+[node name="PaginaQuadro" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_quadro")
+titulo = "Quadro de avisos"
+
+[node name="Intro" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Entre um comunicado sobre a geladeira e outro sobre estacionamento, há uma folha sem cabeçalho."
+autowrap_mode = 3
+
+[node name="Grade" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 14
+columns = 10
+
+[node name="Letra01" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "A"
+
+[node name="Letra02" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "B"
+
+[node name="Letra03" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "C"
+
+[node name="Letra04" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "D"
+
+[node name="Letra05" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "E"
+
+[node name="Letra06" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "F"
+
+[node name="Letra07" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "G"
+
+[node name="Letra08" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "H"
+
+[node name="Letra09" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "I"
+
+[node name="Letra10" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "J"
+
+[node name="Digito01" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito02" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito03" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito04" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito05" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito06" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito07" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito08" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito09" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Digito10" type="Label" parent="Grade"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "0"
+
+[node name="Nota" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Uma letra para cada dígito. Alguém achou que isso era discreto o suficiente."
+autowrap_mode = 3

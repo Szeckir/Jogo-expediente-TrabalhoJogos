@@ -1,0 +1,671 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/final.gd" id="1_final"]
+
+[sub_resource type="Gradient" id="Gradient_luz"]
+offsets = PackedFloat32Array(0.0, 0.6, 1.0)
+colors = PackedColorArray(0.66, 0.9, 0.8, 1.0, 0.24, 0.5, 0.42, 1.0, 0.04, 0.1, 0.085, 1.0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_luz"]
+gradient = SubResource("Gradient_luz")
+fill = 1
+fill_from = Vector2(0.5, 0.46)
+fill_to = Vector2(1.0, 0.46)
+width = 256
+height = 144
+
+[sub_resource type="Gradient" id="Gradient_porta_esq"]
+offsets = PackedFloat32Array(0.0, 0.5, 0.9, 1.0)
+colors = PackedColorArray(0.5, 0.57, 0.54, 1.0, 0.75, 0.81, 0.78, 1.0, 0.63, 0.7, 0.67, 1.0, 0.43, 0.5, 0.47, 1.0)
+
+[sub_resource type="Gradient" id="Gradient_porta_dir"]
+offsets = PackedFloat32Array(0.0, 0.1, 0.5, 1.0)
+colors = PackedColorArray(0.43, 0.5, 0.47, 1.0, 0.63, 0.7, 0.67, 1.0, 0.75, 0.81, 0.78, 1.0, 0.5, 0.57, 0.54, 1.0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_esq"]
+gradient = SubResource("Gradient_porta_esq")
+fill_from = Vector2(0.0, 0.0)
+fill_to = Vector2(1.0, 0.0)
+width = 128
+height = 4
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dir"]
+gradient = SubResource("Gradient_porta_dir")
+fill_from = Vector2(0.0, 0.0)
+fill_to = Vector2(1.0, 0.0)
+width = 128
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_sombra"]
+offsets = PackedFloat32Array(0.0, 1.0)
+colors = PackedColorArray(0.0, 0.0, 0.0, 0.42, 0.0, 0.0, 0.0, 0.0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sombra"]
+gradient = SubResource("Gradient_sombra")
+fill_from = Vector2(0.0, 0.0)
+fill_to = Vector2(0.0, 1.0)
+width = 4
+height = 128
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_painel_porta"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0, 0.0, 0.0, 0.07)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.33, 0.39, 0.36, 0.8)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_placa"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.03, 0.05, 0.04, 1.0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.56, 0.53, 1.0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_papel"]
+content_margin_left = 34.0
+content_margin_top = 24.0
+content_margin_right = 34.0
+content_margin_bottom = 20.0
+bg_color = Color(0.96, 0.95, 0.93, 1.0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1, 0.1, 0.1, 1.0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.0, 0.0, 0.0, 0.35)
+shadow_size = 30
+shadow_offset = Vector2(0.0, 8.0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_carimbo"]
+content_margin_left = 16.0
+content_margin_top = 6.0
+content_margin_right = 16.0
+content_margin_bottom = 6.0
+bg_color = Color(0.1, 0.42, 0.3, 0.07)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.1, 0.42, 0.3, 1.0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_faixa"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12, 0.31, 0.27, 0.08)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Final" type="CanvasLayer"]
+layer = 16
+visible = false
+script = ExtResource("1_final")
+
+[node name="Raiz" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="Fundo" type="ColorRect" parent="Raiz"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.035, 0.075, 0.065, 1.0)
+
+[node name="Brilho" type="TextureRect" parent="Raiz"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+unique_name_in_owner = true
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_luz")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Portas" type="Control" parent="Raiz"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="PortaEsq" type="Control" parent="Raiz/Portas"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 576.0
+offset_bottom = 648.0
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="Chapa" type="TextureRect" parent="Raiz/Portas/PortaEsq"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_esq")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Painel" type="Panel" parent="Raiz/Portas/PortaEsq"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 84.0
+offset_right = -38.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_painel_porta")
+
+[node name="Sombra" type="TextureRect" parent="Raiz/Portas/PortaEsq"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 576.0
+offset_bottom = 220.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sombra")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Fresta" type="ColorRect" parent="Raiz/Portas/PortaEsq"]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 0.0
+offset_right = 576.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.16, 0.2, 0.18, 1.0)
+
+[node name="PortaDir" type="Control" parent="Raiz/Portas"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 0.0
+offset_right = 1152.0
+offset_bottom = 648.0
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="Chapa" type="TextureRect" parent="Raiz/Portas/PortaDir"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_dir")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Painel" type="Panel" parent="Raiz/Portas/PortaDir"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 84.0
+offset_right = -38.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_painel_porta")
+
+[node name="Sombra" type="TextureRect" parent="Raiz/Portas/PortaDir"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 576.0
+offset_bottom = 220.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sombra")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Fresta" type="ColorRect" parent="Raiz/Portas/PortaDir"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 4.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.16, 0.2, 0.18, 1.0)
+
+[node name="Batente" type="Control" parent="Raiz"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Verga" type="ColorRect" parent="Raiz/Batente"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1152.0
+offset_bottom = 56.0
+mouse_filter = 2
+color = Color(0.15, 0.19, 0.17, 1.0)
+
+[node name="VergaLinha" type="ColorRect" parent="Raiz/Batente"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 54.0
+offset_right = 1152.0
+offset_bottom = 56.0
+mouse_filter = 2
+color = Color(0.4, 0.46, 0.43, 1.0)
+
+[node name="BatenteEsq" type="ColorRect" parent="Raiz/Batente"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 56.0
+offset_right = 22.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.15, 0.19, 0.17, 1.0)
+
+[node name="BatenteDir" type="ColorRect" parent="Raiz/Batente"]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 56.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.15, 0.19, 0.17, 1.0)
+
+[node name="Placa" type="Panel" parent="Raiz/Batente"]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 7.0
+offset_right = 676.0
+offset_bottom = 49.0
+unique_name_in_owner = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_placa")
+
+[node name="Seta" type="Polygon2D" parent="Raiz/Batente/Placa"]
+position = Vector2(55.0, 21.0)
+color = Color(0.43, 0.88, 0.69, 1.0)
+polygon = PackedVector2Array(0, -10, 10, 7, -10, 7)
+
+[node name="TextoPlaca" type="Label" parent="Raiz/Batente/Placa"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.43, 0.88, 0.69, 1.0)
+theme_override_font_sizes/font_size = 24
+text = "SAÍDA"
+vertical_alignment = 1
+mouse_filter = 2
+
+[node name="Centro" type="CenterContainer" parent="Raiz"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="Cartao" type="PanelContainer" parent="Raiz/Centro"]
+layout_mode = 2
+custom_minimum_size = Vector2(720.0, 0.0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_papel")
+
+[node name="Coluna" type="VBoxContainer" parent="Raiz/Centro/Cartao"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Cabecalho" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna"]
+layout_mode = 2
+
+[node name="Titulos" type="VBoxContainer" parent="Raiz/Centro/Cartao/Coluna/Cabecalho"]
+layout_mode = 2
+theme_override_constants/separation = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Titulo" type="Label" parent="Raiz/Centro/Cartao/Coluna/Cabecalho/Titulos"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 32
+text = "FIM DE EXPEDIENTE"
+
+[node name="Subtitulo" type="Label" parent="Raiz/Centro/Cartao/Coluna/Cabecalho/Titulos"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.42, 0.41, 1.0)
+theme_override_font_sizes/font_size = 14
+text = "O elevador chegou. Seu trabalho de hoje foi apreciado."
+
+[node name="Carimbo" type="PanelContainer" parent="Raiz/Centro/Cartao/Coluna/Cabecalho"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+rotation = -0.12
+theme_override_styles/panel = SubResource("StyleBoxFlat_carimbo")
+
+[node name="TextoCarimbo" type="Label" parent="Raiz/Centro/Cartao/Coluna/Cabecalho/Carimbo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.42, 0.3, 1.0)
+theme_override_font_sizes/font_size = 19
+text = "EXPEDIENTE\nENCERRADO"
+horizontal_alignment = 1
+
+[node name="Linha" type="ColorRect" parent="Raiz/Centro/Cartao/Coluna"]
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 2.0)
+color = Color(0.12, 0.31, 0.27, 1.0)
+
+[node name="Numeros" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BlocoTempo" type="VBoxContainer" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+theme_override_constants/separation = 0
+size_flags_horizontal = 3
+
+[node name="LegendaTempo" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoTempo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.47, 0.46, 1.0)
+theme_override_font_sizes/font_size = 11
+text = "TEMPO"
+horizontal_alignment = 1
+
+[node name="ValorTempo" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoTempo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 38
+text = "0"
+horizontal_alignment = 1
+
+[node name="Sep1" type="VSeparator" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+
+[node name="BlocoSetores" type="VBoxContainer" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+theme_override_constants/separation = 0
+size_flags_horizontal = 3
+
+[node name="LegendaSetores" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoSetores"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.47, 0.46, 1.0)
+theme_override_font_sizes/font_size = 11
+text = "SETORES"
+horizontal_alignment = 1
+
+[node name="ValorSetores" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoSetores"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 38
+text = "0"
+horizontal_alignment = 1
+
+[node name="Sep2" type="VSeparator" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+
+[node name="BlocoMoveis" type="VBoxContainer" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+theme_override_constants/separation = 0
+size_flags_horizontal = 3
+
+[node name="LegendaMoveis" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoMoveis"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.47, 0.46, 1.0)
+theme_override_font_sizes/font_size = 11
+text = "MÓVEIS"
+horizontal_alignment = 1
+
+[node name="ValorMoveis" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoMoveis"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 38
+text = "0"
+horizontal_alignment = 1
+
+[node name="Sep3" type="VSeparator" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+
+[node name="BlocoFichas" type="VBoxContainer" parent="Raiz/Centro/Cartao/Coluna/Numeros"]
+layout_mode = 2
+theme_override_constants/separation = 0
+size_flags_horizontal = 3
+
+[node name="LegendaFichas" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoFichas"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.47, 0.46, 1.0)
+theme_override_font_sizes/font_size = 11
+text = "FICHAS RESTANTES"
+horizontal_alignment = 1
+
+[node name="ValorFichas" type="Label" parent="Raiz/Centro/Cartao/Coluna/Numeros/BlocoFichas"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 38
+text = "0"
+horizontal_alignment = 1
+
+[node name="LinhaFina" type="ColorRect" parent="Raiz/Centro/Cartao/Coluna"]
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 1.0)
+color = Color(0.78, 0.78, 0.76, 1.0)
+
+[node name="TituloMarcos" type="Label" parent="Raiz/Centro/Cartao/Coluna"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 12
+text = "MARCOS DA PARTIDA"
+
+[node name="ListaMarcos" type="VBoxContainer" parent="Raiz/Centro/Cartao/Coluna"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Marco1" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Marca" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco1"]
+layout_mode = 2
+custom_minimum_size = Vector2(22.0, 0.0)
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "✓"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = ""
+
+[node name="Marco2" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Marca" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco2"]
+layout_mode = 2
+custom_minimum_size = Vector2(22.0, 0.0)
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "✓"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = ""
+
+[node name="Marco3" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Marca" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco3"]
+layout_mode = 2
+custom_minimum_size = Vector2(22.0, 0.0)
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "✓"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = ""
+
+[node name="Marco4" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Marca" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco4"]
+layout_mode = 2
+custom_minimum_size = Vector2(22.0, 0.0)
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "✓"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = ""
+
+[node name="Marco5" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Marca" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco5"]
+layout_mode = 2
+custom_minimum_size = Vector2(22.0, 0.0)
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "✓"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Raiz/Centro/Cartao/Coluna/ListaMarcos/Marco5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = ""
+
+[node name="FaixaSenha" type="PanelContainer" parent="Raiz/Centro/Cartao/Coluna"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_faixa")
+
+[node name="LinhaSenha" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna/FaixaSenha"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="A" type="Label" parent="Raiz/Centro/Cartao/Coluna/FaixaSenha/LinhaSenha"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.37, 0.36, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "A senha era"
+vertical_alignment = 1
+
+[node name="Senha" type="Label" parent="Raiz/Centro/Cartao/Coluna/FaixaSenha/LinhaSenha"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 30
+text = "000"
+
+[node name="B" type="Label" parent="Raiz/Centro/Cartao/Coluna/FaixaSenha/LinhaSenha"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.37, 0.36, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "do bilhete"
+vertical_alignment = 1
+
+[node name="Bilhete" type="Label" parent="Raiz/Centro/Cartao/Coluna/FaixaSenha/LinhaSenha"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 24
+text = "AAA"
+
+[node name="Rodape" type="HBoxContainer" parent="Raiz/Centro/Cartao/Coluna"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Recomecar" type="Label" parent="Raiz/Centro/Cartao/Coluna/Rodape"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 14
+text = "R   bater o ponto de novo, com outra cifra"
+
+[node name="Espaco" type="Control" parent="Raiz/Centro/Cartao/Coluna/Rodape"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Fechar" type="Label" parent="Raiz/Centro/Cartao/Coluna/Rodape"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "ESC   voltar ao andar"

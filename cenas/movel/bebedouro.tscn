@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/movel/movel.tscn" id="1_movel"]
+[ext_resource type="Texture2D" path="res://arte/movel/bebedouro.png" id="2_bebedouro"]
+
+[node name="Bebedouro" instance=ExtResource("1_movel")]
+
+[node name="Imagem" parent="." index="0"]
+texture = ExtResource("2_bebedouro")
+offset = Vector2(0.0, -136.0)

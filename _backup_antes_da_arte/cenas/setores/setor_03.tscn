@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/setor.gd" id="1_setor"]
+[ext_resource type="PackedScene" path="res://cenas/movel/porta.tscn" id="2_porta"]
+[ext_resource type="PackedScene" path="res://cenas/movel/armario.tscn" id="3_armario"]
+[ext_resource type="PackedScene" path="res://cenas/movel/neutro.tscn" id="4_neutro"]
+
+[node name="Setor03" type="Node2D"]
+script = ExtResource("1_setor")
+numero = 3
+nome = "Armários"
+perimetro = 1500.0
+posicao_mapa = Vector2(242.0, 96.0)
+
+[node name="Porta01" parent="." instance=ExtResource("2_porta")]
+position = Vector2(160.0, 0.0)
+rotulo = "Porta 01"
+destino = 1
+
+[node name="Armario14" parent="." instance=ExtResource("3_armario")]
+position = Vector2(560.0, 0.0)
+rotulo = "Armário 14"
+
+[node name="Mesa" parent="." instance=ExtResource("4_neutro")]
+position = Vector2(900.0, 0.0)
+rotulo = "Mesa"
+
+[node name="Porta06" parent="." instance=ExtResource("2_porta")]
+position = Vector2(1240.0, 0.0)
+rotulo = "Porta 06"
+destino = 6
+exige_chave = true

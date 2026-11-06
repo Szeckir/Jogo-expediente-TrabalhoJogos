@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_trancada.gd" id="1_pagina_trancada"]
+
+[node name="PaginaTrancada" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_trancada")
+titulo = "Porta 06"
+
+[node name="Texto" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Trancada. A fechadura é antiga, de chave, e não tem leitor de crachá."
+autowrap_mode = 3

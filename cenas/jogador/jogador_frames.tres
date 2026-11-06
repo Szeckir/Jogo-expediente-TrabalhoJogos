@@ -1,0 +1,117 @@
+[gd_resource type="SpriteFrames" load_steps=24 format=3]
+
+[ext_resource type="Texture2D" path="res://arte/jogador/parado_0.png" id="1_parado0"]
+[ext_resource type="Texture2D" path="res://arte/jogador/parado_1.png" id="2_parado1"]
+[ext_resource type="Texture2D" path="res://arte/jogador/parado_2.png" id="3_parado2"]
+[ext_resource type="Texture2D" path="res://arte/jogador/parado_3.png" id="4_parado3"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_0.png" id="5_andar0"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_1.png" id="6_andar1"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_2.png" id="7_andar2"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_3.png" id="8_andar3"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_4.png" id="9_andar4"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_5.png" id="10_andar5"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_6.png" id="11_andar6"]
+[ext_resource type="Texture2D" path="res://arte/jogador/andar_7.png" id="12_andar7"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_0.png" id="13_correr0"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_1.png" id="14_correr1"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_2.png" id="15_correr2"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_3.png" id="16_correr3"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_4.png" id="17_correr4"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_5.png" id="18_correr5"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_6.png" id="19_correr6"]
+[ext_resource type="Texture2D" path="res://arte/jogador/correr_7.png" id="20_correr7"]
+[ext_resource type="Texture2D" path="res://arte/jogador/interagir_0.png" id="21_interagir0"]
+[ext_resource type="Texture2D" path="res://arte/jogador/interagir_1.png" id="22_interagir1"]
+[ext_resource type="Texture2D" path="res://arte/jogador/interagir_2.png" id="23_interagir2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_parado0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_parado1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_parado2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_parado3")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_andar0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_andar1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_andar2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_andar3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_andar4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_andar5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_andar6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_andar7")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_correr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_correr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_correr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_correr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_correr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_correr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_correr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_correr7")
+}],
+"loop": true,
+"name": &"correr",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_interagir0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_interagir1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_interagir2")
+}],
+"loop": false,
+"name": &"interagir",
+"speed": 10.0
+}]

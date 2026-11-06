@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[node name="CadernoEntrada" type="Label"]
+custom_minimum_size = Vector2(276.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 12
+text = "anotação"
+autowrap_mode = 3

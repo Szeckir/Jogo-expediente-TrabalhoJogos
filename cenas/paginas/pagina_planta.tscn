@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_planta.gd" id="1_pagina_planta"]
+
+[node name="PaginaPlanta" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_planta")
+titulo = "Planta de evacuação"
+
+[node name="Descricao" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "O desenho mostra o andar inteiro. Nenhuma das saídas marcadas existe de verdade, com uma exceção: um elevador de serviço, no fim deste mesmo setor."
+autowrap_mode = 3
+
+[node name="Nota" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Abaixo do símbolo, escrito à mão: SÓ COM CRACHÁ DE SAÍDA."
+autowrap_mode = 3

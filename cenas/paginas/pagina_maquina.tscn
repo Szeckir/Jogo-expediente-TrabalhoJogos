@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_maquina.gd" id="1_pagina_maquina"]
+
+[node name="PaginaMaquina" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_maquina")
+titulo = "Máquina de salgados"
+
+[node name="Fichas" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "Fichas no bolso: 0"
+autowrap_mode = 3
+
+[node name="Sanduiche" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 36.0)
+text = "Sanduíche — 2 fichas"
+
+[node name="Cafe" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 36.0)
+text = "Café — 1 ficha"
+
+[node name="Aviso" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Você já está com um sanduíche."
+autowrap_mode = 3

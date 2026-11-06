@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bmogw646eage"]
+
+[ext_resource type="Script" uid="uid://bahbxq02ikthn" path="res://scripts/jogo.gd" id="1_jogo"]
+[ext_resource type="PackedScene" path="res://cenas/cenario/cenario.tscn" id="2_cenario"]
+[ext_resource type="PackedScene" path="res://cenas/jogador/jogador.tscn" id="3_jogador"]
+[ext_resource type="PackedScene" path="res://cenas/ui/hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://b3nwk03dxwr7c" path="res://cenas/ui/overlay.tscn" id="5_overlay"]
+[ext_resource type="PackedScene" path="res://cenas/ui/mapa.tscn" id="6_mapa"]
+[ext_resource type="PackedScene" path="res://cenas/ui/pausa.tscn" id="7_pausa"]
+[ext_resource type="PackedScene" path="res://cenas/ui/titulo.tscn" id="8_titulo"]
+[ext_resource type="PackedScene" path="res://cenas/ui/final.tscn" id="9_final"]
+[ext_resource type="PackedScene" path="res://cenas/ui/transicao.tscn" id="10_transicao"]
+
+[node name="Jogo" type="Node2D" unique_id=368799998]
+script = ExtResource("1_jogo")
+
+[node name="Cenario" parent="." unique_id=2049283050 instance=ExtResource("2_cenario")]
+
+[node name="Mundo" type="Node2D" parent="." unique_id=1643429053]
+
+[node name="Jogador" parent="." unique_id=1693962447 instance=ExtResource("3_jogador")]
+position = Vector2(576, 470)
+
+[node name="HUD" parent="." unique_id=1956105204 instance=ExtResource("4_hud")]
+
+[node name="Overlay" parent="." unique_id=635580508 instance=ExtResource("5_overlay")]
+
+[node name="Mapa" parent="." unique_id=232197552 instance=ExtResource("6_mapa")]
+
+[node name="Final" parent="." unique_id=779697036 instance=ExtResource("9_final")]
+
+[node name="Pausa" parent="." unique_id=104292066 instance=ExtResource("7_pausa")]
+
+[node name="Transicao" parent="." unique_id=1493797842 instance=ExtResource("10_transicao")]
+
+[node name="Titulo" parent="." unique_id=624724788 instance=ExtResource("8_titulo")]
+
+[connection signal="fechou" from="Overlay" to="." method="_ao_fechar_overlay"]
+[connection signal="reiniciar_pedido" from="Final" to="." method="_reiniciar"]
+[connection signal="reiniciar_pedido" from="Pausa" to="." method="_reiniciar"]
+[connection signal="comecou" from="Titulo" to="." method="_ao_comecar"]

@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/jogador.gd" id="1_jogador"]
+[ext_resource type="SpriteFrames" path="res://cenas/jogador/jogador_frames.tres" id="2_jogador_frames"]
+
+[node name="Jogador" type="Node2D"]
+z_index = 10
+script = ExtResource("1_jogador")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+offset = Vector2(0.0, -132.0)
+sprite_frames = ExtResource("2_jogador_frames")
+animation = &"parado"
+autoplay = "parado"

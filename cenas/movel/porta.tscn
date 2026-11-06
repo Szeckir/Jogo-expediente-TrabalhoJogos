@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/movel/movel.tscn" id="1_movel"]
+[ext_resource type="Script" path="res://scripts/porta.gd" id="2_porta"]
+[ext_resource type="PackedScene" path="res://cenas/paginas/pagina_trancada.tscn" id="3_pagina_trancada"]
+[ext_resource type="Texture2D" path="res://arte/movel/porta.png" id="4_porta"]
+
+[node name="Porta" instance=ExtResource("1_movel")]
+script = ExtResource("2_porta")
+pagina_trancada = ExtResource("3_pagina_trancada")
+
+[node name="Imagem" parent="." index="0"]
+texture = ExtResource("4_porta")
+offset = Vector2(0.0, -212.0)
+
+[node name="Numero" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -23.0
+offset_top = -205.0
+offset_right = 23.0
+offset_bottom = -182.0
+theme_override_colors/font_color = Color(0.17, 0.22, 0.2, 1.0)
+theme_override_font_sizes/font_size = 14
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1

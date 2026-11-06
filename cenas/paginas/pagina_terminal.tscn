@@ -1,0 +1,273 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_terminal.gd" id="1_pagina_terminal"]
+[ext_resource type="PackedScene" path="res://cenas/ui/forma.tscn" id="2_forma"]
+[ext_resource type="PackedScene" path="res://cenas/ui/fluxo.tscn" id="3_fluxo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modelo"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.93, 0.93, 0.91, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.65, 0.63, 1.0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PaginaTerminal" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_terminal")
+titulo = "Terminal de refino"
+
+[node name="Cota" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Aviso" type="Label" parent="Cota"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "COTA DIÁRIA ATINGIDA. O terminal não aceita mais partidas hoje."
+autowrap_mode = 3
+
+[node name="Intro" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Premio" type="Label" parent="Intro"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Três rodadas seguidas. Prêmio: 3 fichas."
+autowrap_mode = 3
+
+[node name="Usadas" type="Label" parent="Intro"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Partidas usadas: 0 de 2"
+autowrap_mode = 3
+
+[node name="Iniciar" type="Button" parent="Intro"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 36.0)
+text = "Iniciar partida"
+
+[node name="Rodada" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Contador" type="Label" parent="Rodada"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "RODADA 1 DE 3"
+autowrap_mode = 3
+
+[node name="Enunciado" type="Label" parent="Rodada"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 17
+text = "UM DESTES NÃO PERTENCE AO CONJUNTO."
+autowrap_mode = 3
+
+[node name="Escolha" type="VBoxContainer" parent="Rodada"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Modelo" type="PanelContainer" parent="Rodada/Escolha"]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_modelo")
+
+[node name="Linha" type="HBoxContainer" parent="Rodada/Escolha/Modelo"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Rotulo" type="Label" parent="Rodada/Escolha/Modelo/Linha"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.4, 0.39, 1.0)
+theme_override_font_sizes/font_size = 12
+text = "MODELO"
+vertical_alignment = 1
+
+[node name="FormaModelo" parent="Rodada/Escolha/Modelo/Linha" instance=ExtResource("2_forma")]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(76.0, 76.0)
+
+[node name="Opcoes" type="HBoxContainer" parent="Rodada/Escolha"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Opcao1" type="Button" parent="Rodada/Escolha/Opcoes"]
+layout_mode = 2
+custom_minimum_size = Vector2(124.0, 100.0)
+
+[node name="Forma" parent="Rodada/Escolha/Opcoes/Opcao1" instance=ExtResource("2_forma")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Opcao2" type="Button" parent="Rodada/Escolha/Opcoes"]
+layout_mode = 2
+custom_minimum_size = Vector2(124.0, 100.0)
+
+[node name="Forma" parent="Rodada/Escolha/Opcoes/Opcao2" instance=ExtResource("2_forma")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Opcao3" type="Button" parent="Rodada/Escolha/Opcoes"]
+layout_mode = 2
+custom_minimum_size = Vector2(124.0, 100.0)
+
+[node name="Forma" parent="Rodada/Escolha/Opcoes/Opcao3" instance=ExtResource("2_forma")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Opcao4" type="Button" parent="Rodada/Escolha/Opcoes"]
+layout_mode = 2
+custom_minimum_size = Vector2(124.0, 100.0)
+
+[node name="Forma" parent="Rodada/Escolha/Opcoes/Opcao4" instance=ExtResource("2_forma")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dica" type="Label" parent="Rodada/Escolha"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 12
+text = "Errar reinicia a partida. O terminal não explica a regra."
+autowrap_mode = 3
+
+[node name="Grade" type="VBoxContainer" parent="Rodada"]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Fluxo" parent="Rodada/Grade" instance=ExtResource("3_fluxo")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Andamento" type="Label" parent="Rodada/Grade"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 14
+text = "0 de 4 pares ligados  ·  0 de 25 células"
+autowrap_mode = 3
+
+[node name="Rodape" type="HBoxContainer" parent="Rodada/Grade"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Limpar" type="Button" parent="Rodada/Grade/Rodape"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 34.0)
+text = "Limpar"
+
+[node name="DicaGrade" type="Label" parent="Rodada/Grade/Rodape"]
+layout_mode = 2
+custom_minimum_size = Vector2(420.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 12
+text = "Arraste de uma ponta até a outra. Aqui não tem resposta errada: tente quantas vezes quiser."
+autowrap_mode = 3
+vertical_alignment = 1
+
+[node name="Vitoria" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="Vitoria"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "PARTIDA VENCIDA."
+autowrap_mode = 3
+
+[node name="Creditado" type="Label" parent="Vitoria"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Creditado: 3 fichas."
+autowrap_mode = 3
+
+[node name="Recusa" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="Recusa"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "RESPOSTA RECUSADA."
+autowrap_mode = 3
+
+[node name="Aviso" type="Label" parent="Recusa"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "A partida foi reiniciada."
+autowrap_mode = 3
+
+[node name="Voltar" type="Button" parent="Recusa"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 36.0)
+text = "Voltar"

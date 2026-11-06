@@ -1,0 +1,79 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/titulo.gd" id="1_titulo"]
+
+[node name="Titulo" type="CanvasLayer"]
+layer = 20
+script = ExtResource("1_titulo")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.961, 0.957, 0.945, 1.0)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Coluna" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="NomeDoJogo" type="Label" parent="Centro/Coluna"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 64
+text = "EXPEDIENTE"
+horizontal_alignment = 1
+
+[node name="Linha" type="ColorRect" parent="Centro/Coluna"]
+layout_mode = 2
+custom_minimum_size = Vector2(420.0, 2.0)
+color = Color(0.12, 0.31, 0.27, 1.0)
+
+[node name="Subtitulo" type="Label" parent="Centro/Coluna"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.35, 0.35, 1.0)
+theme_override_font_sizes/font_size = 16
+custom_minimum_size = Vector2(520.0, 0.0)
+text = "Seu expediente acabou faz horas. O andar só dá voltas, e nenhuma porta leva para fora. Ache o jeito de ir embora."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Espaco" type="Control" parent="Centro/Coluna"]
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 40.0)
+
+[node name="Comandos" type="Label" parent="Centro/Coluna"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.45, 0.45, 1.0)
+theme_override_font_sizes/font_size = 14
+text = "← →  andar        E  interagir        M  mapa        ESC  pausa"
+horizontal_alignment = 1
+
+[node name="Comecar" type="Label" parent="Centro/Coluna"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "qualquer tecla para bater o ponto"
+horizontal_alignment = 1
+
+[node name="Rodape" type="Label" parent="."]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 600.0
+offset_right = 1152.0
+offset_bottom = 620.0
+theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1.0)
+theme_override_font_sizes/font_size = 12
+text = "Grupo 07 · Dhara Hadi · Júlia Bettiol · Thomaz Szeckir"
+horizontal_alignment = 1

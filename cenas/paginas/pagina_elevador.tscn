@@ -1,0 +1,52 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_elevador.gd" id="1_pagina_elevador"]
+
+[node name="PaginaElevador" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_elevador")
+titulo = "Elevador de serviço"
+
+[node name="Aprovado" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Linha1" type="Label" parent="Aprovado"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "O leitor apita uma vez. A luz fica verde."
+autowrap_mode = 3
+
+[node name="Linha2" type="Label" parent="Aprovado"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "As portas abrem para um corredor que você nunca viu."
+autowrap_mode = 3
+
+[node name="Negado" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Linha1" type="Label" parent="Negado"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Há um leitor de crachá ao lado do botão."
+autowrap_mode = 3
+
+[node name="Linha2" type="Label" parent="Negado"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Você encosta o seu. A luz fica vermelha. NÍVEL INSUFICIENTE."
+autowrap_mode = 3

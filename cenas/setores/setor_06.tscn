@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/setor.gd" id="1_setor"]
+[ext_resource type="PackedScene" path="res://cenas/movel/porta.tscn" id="2_porta"]
+[ext_resource type="PackedScene" path="res://cenas/movel/cofre.tscn" id="3_cofre"]
+
+[node name="Setor06" type="Node2D"]
+script = ExtResource("1_setor")
+numero = 6
+nome = "Arquivo morto"
+perimetro = 1900.0
+posicao_mapa = Vector2(2.0, 1.0)
+
+[node name="Porta03" parent="." instance=ExtResource("2_porta")]
+position = Vector2(240.0, 0.0)
+rotulo = "Porta 03"
+destino = 3
+
+[node name="Cofre" parent="." instance=ExtResource("3_cofre")]
+position = Vector2(1030.0, 0.0)
+rotulo = "Cofre"

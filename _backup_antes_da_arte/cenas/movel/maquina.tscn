@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/movel/movel.tscn" id="1_movel"]
+[ext_resource type="PackedScene" path="res://cenas/paginas/pagina_maquina.tscn" id="2_pagina_maquina"]
+
+[node name="Maquina" instance=ExtResource("1_movel")]
+pagina = ExtResource("2_pagina_maquina")
+
+[node name="Caixa" parent="." index="0"]
+offset_left = -45.0
+offset_top = -150.0
+offset_right = 45.0
+offset_bottom = 0.0

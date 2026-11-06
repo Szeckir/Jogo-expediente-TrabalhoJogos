@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/movel/movel.tscn" id="1_movel"]
+[ext_resource type="PackedScene" path="res://cenas/paginas/pagina_armario.tscn" id="2_pagina_armario"]
+[ext_resource type="Texture2D" path="res://arte/movel/armario.png" id="3_armario"]
+
+[node name="Armario" instance=ExtResource("1_movel")]
+pagina = ExtResource("2_pagina_armario")
+
+[node name="Imagem" parent="." index="0"]
+texture = ExtResource("3_armario")
+offset = Vector2(0.0, -188.0)

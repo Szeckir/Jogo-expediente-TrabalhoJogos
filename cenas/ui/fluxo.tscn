@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/fluxo.gd" id="1_fluxo"]
+
+[node name="Fluxo" type="Control"]
+custom_minimum_size = Vector2(320.0, 320.0)
+script = ExtResource("1_fluxo")

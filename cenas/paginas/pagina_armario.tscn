@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_armario.gd" id="1_pagina_armario"]
+
+[node name="PaginaArmario" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_armario")
+titulo = "Armário 14"
+
+[node name="Intro" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Uma etiqueta datilografada, colada por dentro da porta:"
+autowrap_mode = 3
+
+[node name="Bilhete" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.12, 0.31, 0.27, 1.0)
+theme_override_font_sizes/font_size = 40
+text = "ABC"
+autowrap_mode = 3
+
+[node name="Nota" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Três letras, sem mais nada escrito."
+autowrap_mode = 3

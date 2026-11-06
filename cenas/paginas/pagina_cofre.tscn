@@ -1,0 +1,145 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina_cofre.gd" id="1_pagina_cofre"]
+
+[node name="PaginaCofre" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina_cofre")
+titulo = "Cofre do arquivo"
+
+[node name="Aberto" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Texto" type="Label" parent="Aberto"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "O cofre está aberto e vazio."
+autowrap_mode = 3
+
+[node name="Fechadura" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Dica" type="Label" parent="Fechadura"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Teclado de três dígitos. Sem trava por tentativa — mas também sem dica."
+autowrap_mode = 3
+
+[node name="Visor" type="Label" parent="Fechadura"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 34
+text = "_ _ _"
+horizontal_alignment = 1
+
+[node name="Teclado" type="GridContainer" parent="Fechadura"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Tecla1" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "1"
+
+[node name="Tecla2" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "2"
+
+[node name="Tecla3" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "3"
+
+[node name="Tecla4" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "4"
+
+[node name="Tecla5" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "5"
+
+[node name="Tecla6" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "6"
+
+[node name="Tecla7" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "7"
+
+[node name="Tecla8" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "8"
+
+[node name="Tecla9" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "9"
+
+[node name="TeclaC" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "C"
+
+[node name="Tecla0" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "0"
+
+[node name="TeclaOK" type="Button" parent="Fechadura/Teclado"]
+layout_mode = 2
+custom_minimum_size = Vector2(120.0, 46.0)
+theme_override_font_sizes/font_size = 18
+text = "OK"
+
+[node name="Sucesso" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Linha1" type="Label" parent="Sucesso"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "A porta cede."
+autowrap_mode = 3
+
+[node name="Linha2" type="Label" parent="Sucesso"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Dentro, um único crachá plastificado. Na tarja, impresso: SAÍDA."
+autowrap_mode = 3

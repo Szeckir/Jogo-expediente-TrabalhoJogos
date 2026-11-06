@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/movel/movel.tscn" id="1_movel"]
+[ext_resource type="PackedScene" path="res://cenas/paginas/pagina_planta.tscn" id="2_pagina_planta"]
+[ext_resource type="Texture2D" path="res://arte/movel/planta.png" id="3_planta"]
+
+[node name="Planta" instance=ExtResource("1_movel")]
+pagina = ExtResource("2_pagina_planta")
+
+[node name="Imagem" parent="." index="0"]
+texture = ExtResource("3_planta")
+offset = Vector2(0.0, -216.0)

@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/paginas/pagina.gd" id="1_pagina"]
+
+[node name="PaginaNeutro" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_pagina")
+
+[node name="Texto" type="Label" parent="."]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "Você olha com atenção. Não há nada aqui."
+autowrap_mode = 3

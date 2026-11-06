@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://cenas/movel/movel.tscn" id="1_movel"]
+[ext_resource type="PackedScene" path="res://cenas/paginas/pagina_quadro.tscn" id="2_pagina_quadro"]
+[ext_resource type="Texture2D" path="res://arte/movel/quadro.png" id="3_quadro"]
+
+[node name="Quadro" instance=ExtResource("1_movel")]
+pagina = ExtResource("2_pagina_quadro")
+
+[node name="Imagem" parent="." index="0"]
+texture = ExtResource("3_quadro")
+offset = Vector2(0.0, -220.0)
