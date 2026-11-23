@@ -145,9 +145,34 @@ func _pontilhado() -> void:
 		x += 24.0
 
 
-func _corredor(a: int, b: int) -> void:
+# Caminho do corredor entre dois cartões, a partir do centro de `a`.
+# Quase sempre é uma reta. Quando os cartões estão em linhas diferentes e
+# separados por mais de uma coluna (hoje, 03 e 05), a reta passaria por
+# cima de um cartão do meio, então o corredor sobe pela fresta entre as
+# duas linhas e anda por ela até a coluna do outro. Ele sai deslocado para
+# o lado do outro cartão, para não encostar nos corredores verticais que
+# já descem do centro desses mesmos cartões (02-05 e 03-06).
+func _rota(a: int, b: int) -> PackedVector2Array:
 	var ca := _centro(a)
 	var cb := _centro(b)
+	var ga: Vector2 = Dados.info(a)["mapa"]
+	var gb: Vector2 = Dados.info(b)["mapa"]
+	if ga.y != gb.y and absf(ga.x - gb.x) > 1.0:
+		var fresta := (maxf(ca.y, cb.y) - CARTAO.y / 2.0 + minf(ca.y, cb.y) + CARTAO.y / 2.0) / 2.0
+		var desvio := Vector2(signf(cb.x - ca.x) * 46.0, 0.0)
+		var pa := ca + desvio
+		var pb := cb - desvio
+		return PackedVector2Array([pa, Vector2(pa.x, fresta), Vector2(pb.x, fresta), pb])
+	return PackedVector2Array([ca, cb])
+
+
+func _corredor(a: int, b: int) -> void:
+	var rota := _rota(a, b)
+	var ca := rota[0]
+	var cb := rota[rota.size() - 1]
+	if rota.size() > 2:
+		_corredor_dobrado(a, b, rota)
+		return
 	if _trancada(a, b):
 		_tracejada(ca, cb, ALERTA, 3.0, 9.0, 7.0)
 		_cadeado((ca + cb) / 2.0)
@@ -157,6 +182,20 @@ func _corredor(a: int, b: int) -> void:
 		var lado := Vector2(-dir.y, dir.x) * 9.0
 		draw_line(ca + lado, cb + lado, CINZA, 1.5)
 		draw_line(ca - lado, cb - lado, CINZA, 1.5)
+
+
+# Corredor com cotovelos: contorno cinza por baixo e piso claro por cima,
+# o que dá o mesmo ar das duas linhas de borda do corredor reto.
+func _corredor_dobrado(a: int, b: int, rota: PackedVector2Array) -> void:
+	if _trancada(a, b):
+		for i in rota.size() - 1:
+			_tracejada(rota[i], rota[i + 1], ALERTA, 3.0, 9.0, 7.0)
+		_cadeado((rota[1] + rota[2]) / 2.0)
+		return
+	draw_polyline(rota, CINZA, 21.0)
+	draw_polyline(rota, CORREDOR, 18.0)
+	for i in range(1, rota.size() - 1):
+		draw_circle(rota[i], 9.0, CORREDOR)
 
 
 func _cartao(numero: int) -> void:
@@ -170,7 +209,6 @@ func _cartao(numero: int) -> void:
 		draw_style_box(s, caixa)
 		_numero_e_nome(numero, canto, Color(1, 1, 1), VERDE_CLARO)
 		_progresso(numero, canto, VERDE_CLARO, Color(1, 1, 1, 0.45), VERDE_CLARO)
-		_etiqueta_voce(canto)
 	elif visitado:
 		var s := _estilo(Color(1, 1, 1), TINTA, 2, Color(0, 0, 0, 0.12), 8)
 		draw_style_box(s, caixa)
@@ -187,6 +225,10 @@ func _cartao(numero: int) -> void:
 	if visitado:
 		for vizinho in Dados.vizinhos(numero):
 			_marca_de_porta(numero, vizinho)
+
+	# por último, para a pílula ficar por cima das marcas de porta do topo
+	if atual:
+		_etiqueta_voce(canto)
 
 
 func _numero_e_nome(numero: int, canto: Vector2, cor_numero: Color, cor_nome: Color) -> void:
@@ -223,9 +265,9 @@ func _etiqueta_voce(canto: Vector2) -> void:
 
 
 func _marca_de_porta(numero: int, vizinho: int) -> void:
-	var de := _centro(numero)
-	var para := _centro(vizinho)
-	var dir := (para - de).normalized()
+	var rota := _rota(numero, vizinho)
+	var de := rota[0]
+	var dir := (rota[1] - de).normalized()
 	var metade := CARTAO / 2.0
 	var t := minf(metade.x / maxf(absf(dir.x), 0.0001), metade.y / maxf(absf(dir.y), 0.0001))
 	var borda := de + dir * t

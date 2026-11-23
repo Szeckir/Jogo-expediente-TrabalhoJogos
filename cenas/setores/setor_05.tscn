@@ -3,24 +3,91 @@
 [ext_resource type="Script" path="res://scripts/setor.gd" id="1_setor"]
 [ext_resource type="PackedScene" path="res://cenas/movel/porta.tscn" id="2_porta"]
 [ext_resource type="PackedScene" path="res://cenas/movel/maquina.tscn" id="3_maquina"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="9_npc"]
+[ext_resource type="Script" path="res://scripts/decor.gd" id="10_decor"]
 
 [node name="Setor05" type="Node2D"]
 script = ExtResource("1_setor")
 numero = 5
 nome = "Corredor de máquinas"
-perimetro = 2200.0
+perimetro = 3000.0
 posicao_mapa = Vector2(0.0, 1.0)
+ambiente = 4
+tom = Color(1, 0.91, 0.82, 1)
 
 [node name="Porta02" parent="." instance=ExtResource("2_porta")]
-position = Vector2(270.0, 0.0)
+position = Vector2(300.0, 0.0)
 rotulo = "Porta 02"
 destino = 2
 
 [node name="MaquinaDeSalgados" parent="." instance=ExtResource("3_maquina")]
-position = Vector2(970.0, 0.0)
+position = Vector2(1050.0, 0.0)
 rotulo = "Máquina de salgados"
 
 [node name="Porta04" parent="." instance=ExtResource("2_porta")]
-position = Vector2(1650.0, 0.0)
+position = Vector2(1800.0, 0.0)
 rotulo = "Porta 04"
 destino = 4
+
+[node name="Porta03" parent="." instance=ExtResource("2_porta")]
+position = Vector2(2500.0, 0.0)
+rotulo = "Porta 03"
+destino = 3
+
+[node name="Extintor" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(800.0, 0.0)
+tipo = 7
+semente = 1
+
+[node name="Placa" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(1260.0, 0.0)
+tipo = 9
+semente = 2
+
+[node name="Lixeira" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(1370.0, 0.0)
+tipo = 8
+semente = 3
+
+[node name="MaquinaDeBebidas" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(2200.0, 0.0)
+tipo = 10
+semente = 4
+
+[node name="Passante" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(1560.0, 0.0)
+papel = 0
+alcance = 120.0
+camisa = Color(0.72, 0.42, 0.22, 1)
+calca = Color(0.24, 0.26, 0.30, 1)
+cabelo = Color(0.15, 0.12, 0.10, 1)
+pele = Color(0.72, 0.54, 0.42, 1)
+falas = PackedStringArray("Será que a máquina aceita ficha de hoje?", "Só queria um salgadinho...", "Essa máquina engole tudo e não devolve nada.", "Hoje é dia de gordura, sim.")
+
+[node name="ConversaA" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(2120.0, 0.0)
+papel = 1
+camisa = Color(0.35, 0.55, 0.45, 1)
+cabelo = Color(0.25, 0.18, 0.12, 1)
+pele = Color(0.79, 0.61, 0.49, 1)
+fase = 0.0
+grupo = "maquinas"
+lado = 0
+
+[node name="ConversaB" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(2280.0, 0.0)
+papel = 1
+virado = -1
+camisa = Color(0.70, 0.35, 0.30, 1)
+cabelo = Color(0.12, 0.10, 0.10, 1)
+pele = Color(0.60, 0.43, 0.33, 1)
+fase = 3.14
+grupo = "maquinas"
+lado = 1

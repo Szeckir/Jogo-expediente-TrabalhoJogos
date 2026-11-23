@@ -20,13 +20,17 @@ extends Pagina
 # não tem resposta errada — dá para limpar e tentar de novo à vontade,
 # porque a cota é curta e o terminal é a única fonte de fichas do jogo.
 #
-# A página tem cinco estados (nós Cota, Intro, Rodada, Vitoria e Recusa
-# na cena); só um fica visível por vez. Dentro de Rodada há dois blocos,
+# Quando a cota acaba, a tela da cota oferece "Recuperar tentativas": uma
+# partida de Termo (scripts/termo.gd). Ganhar devolve a cota inteira, e dá
+# para jogar o Termo sempre que a cota acabar, com palavra nova.
+#
+# A página tem sete estados (nós Cota, Intro, Rodada, Vitoria, Recusa,
+# Recuperacao e Recuperada na cena); só um fica visível por vez. Dentro de Rodada há dois blocos,
 # Escolha (as quatro formas) e Grade (o fluxo).
 
 const ACHE_O_INTRUSO := "UM DESTES NÃO PERTENCE AO CONJUNTO."
 const ACHE_O_IGUAL := "ESCOLHA O SÍMBOLO IGUAL AO MODELO."
-const LIGUE_TUDO := "LIGUE CADA PAR SEM CRUZAR E SEM DEIXAR CÉLULA VAZIA."
+const LIGUE_TUDO := "LIGUE CADA PAR SEM CRUZAR E COBRIR 100% DOS QUADRADINHOS. NENHUM PODE FICAR VAZIO."
 
 # Quais famílias podem cair em cada rodada. A partida sobe de degrau, e
 # do degrau 3 em diante as famílias saem na versão difícil.
@@ -41,7 +45,8 @@ const PRIMEIRO_DEGRAU_DIFICIL := 2
 var _rodada := 0
 var _certa := -1
 
-@onready var _estados: Array[Control] = [%Cota, %Intro, %Rodada, %Vitoria, %Recusa]
+@onready var _estados: Array[Control] = [
+	%Cota, %Intro, %Rodada, %Vitoria, %Recusa, %Recuperacao, %Recuperada]
 @onready var _premio: Label = %Premio
 @onready var _usadas: Label = %Usadas
 @onready var _contador: Label = %Contador
@@ -54,6 +59,7 @@ var _certa := -1
 @onready var _fluxo: Fluxo = %Fluxo
 @onready var _andamento: Label = %Andamento
 @onready var _creditado: Label = %Creditado
+@onready var _termo: Termo = %Termo
 
 
 func _ready() -> void:
@@ -65,10 +71,20 @@ func _ready() -> void:
 	%Limpar.pressed.connect(_fluxo.limpar)
 	_fluxo.resolvido.connect(_ao_resolver_fluxo)
 	_fluxo.mudou.connect(func(): _andamento.text = _fluxo.progresso())
+	_fluxo.incompleto.connect(_ao_faltar_celulas)
+	%Recuperar.pressed.connect(_abrir_termo)
+	%DesistirTermo.pressed.connect(_mostrar_intro)
+	%VoltarRecuperada.pressed.connect(_mostrar_intro)
+	_termo.ganhou.connect(_ao_ganhar_termo)
 
 
 func ao_abrir(_movel: Movel) -> void:
 	_mostrar_intro()
+
+
+# Enquanto o Termo está sendo jogado, as letras (inclusive o E) são dele.
+func captura_teclado() -> bool:
+	return _termo.is_visible_in_tree() and not _termo.encerrado()
 
 
 func _mostrar(estado: Control) -> void:
@@ -134,6 +150,30 @@ func _proxima_rodada() -> void:
 		forma.definir(opcoes[i])
 
 	_mostrar(%Rodada)
+
+
+func _ao_faltar_celulas(faltam: int) -> void:
+	_andamento.text = "Ligou os pares, mas %s. Tem que cobrir TODOS os quadradinhos." % (
+		"faltou 1 célula" if faltam == 1 else "faltaram %d células" % faltam)
+
+
+func _abrir_termo() -> void:
+	_termo.novo_jogo()
+	_mostrar(%Recuperacao)
+
+
+# O prêmio é dado na hora do acerto; a tela de "recuperadas" só entra
+# depois que o jogador viu as letras ficarem verdes.
+func _ao_ganhar_termo() -> void:
+	Estado.recuperar_partidas()
+	var t := create_tween()
+	t.tween_interval(1.5)
+	t.tween_callback(_mostrar_recuperada)
+
+
+func _mostrar_recuperada() -> void:
+	Audio.tocar("aceito")
+	_mostrar(%Recuperada)
 
 
 func _ao_resolver_fluxo() -> void:

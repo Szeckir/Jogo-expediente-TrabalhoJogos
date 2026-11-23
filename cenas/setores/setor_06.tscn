@@ -10,6 +10,8 @@ numero = 6
 nome = "Arquivo morto"
 perimetro = 1900.0
 posicao_mapa = Vector2(2.0, 1.0)
+ambiente = 5
+tom = Color(0.84, 0.8, 0.72, 1)
 
 [node name="Porta03" parent="." instance=ExtResource("2_porta")]
 position = Vector2(240.0, 0.0)

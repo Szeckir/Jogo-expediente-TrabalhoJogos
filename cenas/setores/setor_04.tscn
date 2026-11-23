@@ -11,6 +11,8 @@ numero = 4
 nome = "Copa"
 perimetro = 2100.0
 posicao_mapa = Vector2(1.0, 1.0)
+ambiente = 3
+tom = Color(0.8, 0.78, 0.74, 1)
 
 [node name="Porta05" parent="." instance=ExtResource("2_porta")]
 position = Vector2(240.0, 0.0)

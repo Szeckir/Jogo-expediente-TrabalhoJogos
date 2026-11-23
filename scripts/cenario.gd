@@ -14,6 +14,15 @@ extends Node2D
 const PERIODO := 100.0
 
 @onready var _x0: float = position.x
+@onready var _parede: Sprite2D = $Parede
+@onready var _chao: Sprite2D = $Chao
+
+
+# Tinta do setor (Setor.tom). Parede e chão são tiles de uma cor só, então
+# multiplicar pela tinta é o jeito barato de dar clima a cada setor.
+func definir_tom(tom: Color) -> void:
+	_parede.modulate = tom
+	_chao.modulate = tom
 
 
 func atualizar(posicao_no_anel: float) -> void:

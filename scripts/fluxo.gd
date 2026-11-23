@@ -18,11 +18,14 @@ extends Control
 
 signal resolvido
 signal mudou
+## Todos os pares ligados, mas sobrou célula vazia. Leva quantas faltaram.
+signal incompleto(faltam: int)
 
 const TINTA := Color(0.10, 0.10, 0.10)
 const GRADE := Color(0.78, 0.80, 0.77)
 const FUNDO := Color(0.99, 0.99, 0.98)
 const MOLDURA := Color(0.38, 0.40, 0.39)
+const ALERTA := Color(0.86, 0.10, 0.08)
 
 ## Tamanho da grade. 5 x 5 com 4 pares é a cartela padrão do jogo.
 @export var colunas := 5
@@ -38,6 +41,8 @@ var _trilhas: Array[Array] = []   # par -> células, a partir de uma das pontas
 var _dono := {}                   # célula -> índice do par que a ocupa
 var _arrastando := -1
 var _pronto := false
+var _falha := 0.0                 # 1 -> 0 enquanto o aviso de célula vazia roda
+var _aviso: Tween
 
 
 # ---------------------------------------------------------- cartela
@@ -65,6 +70,7 @@ func limpar() -> void:
 		_trilhas.append([])
 	_arrastando = -1
 	_pronto = false
+	_parar_aviso()
 	queue_redraw()
 	mudou.emit()
 
@@ -296,11 +302,54 @@ func _checar() -> void:
 		if not _fechada(par):
 			return
 	if _dono.size() < colunas * linhas:
+		_avisar_vazias(colunas * linhas - _dono.size())
 		return
 	_pronto = true
 	_arrastando = -1
 	queue_redraw()
 	resolvido.emit()
+
+
+# Ligou tudo mas deixou quadradinho vazio: muita gente não lê que é preciso
+# cobrir 100%. Então a janela inteira treme, a tela fica vermelha por um
+# instante e as células que faltam piscam em vermelho.
+func _avisar_vazias(faltam: int) -> void:
+	Audio.tocar("recusado")
+	incompleto.emit(faltam)
+	_parar_aviso()
+	_aviso = create_tween()
+	_aviso.tween_method(_passo_aviso, 1.0, 0.0, 0.9)
+
+
+func _passo_aviso(t: float) -> void:
+	_falha = t
+	var camada := _camada()
+	if camada != null:
+		# treme na horizontal, com um tiquinho na vertical; some junto com t
+		camada.offset = Vector2(sin(t * 70.0) * 16.0 * t, cos(t * 53.0) * 5.0 * t)
+	queue_redraw()
+
+
+func _parar_aviso() -> void:
+	if _aviso != null:
+		_aviso.kill()
+		_aviso = null
+	_falha = 0.0
+	var camada := _camada()
+	if camada != null:
+		camada.offset = Vector2.ZERO
+
+
+# A janela do terminal mora no Overlay, que é um CanvasLayer; é ele que treme.
+func _camada() -> CanvasLayer:
+	var n: Node = get_parent()
+	while n != null and not (n is CanvasLayer):
+		n = n.get_parent()
+	return n as CanvasLayer
+
+
+func _exit_tree() -> void:
+	_parar_aviso()
 
 
 # --------------------------------------------------------- geometria
@@ -336,17 +385,31 @@ func _draw() -> void:
 	var caixa := Rect2(o, Vector2(l * colunas, l * linhas))
 
 	draw_rect(caixa, FUNDO)
+	if _falha > 0.0:
+		for y in linhas:
+			for x in colunas:
+				if not _dono.has(Vector2i(x, y)):
+					draw_rect(Rect2(o + Vector2(x, y) * l, Vector2(l, l)),
+						Color(ALERTA, 0.45 * _falha))
 	for i in colunas + 1:
 		draw_line(o + Vector2(i * l, 0), o + Vector2(i * l, l * linhas), GRADE, 1.0)
 	for j in linhas + 1:
 		draw_line(o + Vector2(0, j * l), o + Vector2(l * colunas, j * l), GRADE, 1.0)
-	draw_rect(caixa, MOLDURA, false, 2.0)
+	draw_rect(caixa, MOLDURA.lerp(ALERTA, _falha), false, 2.0)
 
 	for par in _pontas.size():
 		_desenhar_trilha(par, l)
 	for par in _pontas.size():
 		for ponta in _pontas[par]:
 			_marcador(_centro(ponta), par, l * 0.26)
+
+	if _falha > 0.0:
+		# véu vermelho sobre a tela toda, não só sobre a grade
+		var volta := get_global_transform_with_canvas().affine_inverse()
+		var a: Vector2 = volta * Vector2.ZERO
+		var b: Vector2 = volta * get_viewport_rect().size
+		var tela := Rect2(a, b - a).abs().grow(40.0)
+		draw_rect(tela, Color(ALERTA, 0.30 * _falha))
 
 
 # Quatro traços diferentes, porque não existe cor aqui: cheio,

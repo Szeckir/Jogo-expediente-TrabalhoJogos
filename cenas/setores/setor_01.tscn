@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://cenas/movel/vaso.tscn" id="4_vaso"]
 [ext_resource type="PackedScene" path="res://cenas/movel/planta.tscn" id="5_planta"]
 [ext_resource type="PackedScene" path="res://cenas/movel/elevador.tscn" id="6_elevador"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="9_npc"]
 
 [node name="Setor01" type="Node2D"]
 script = ExtResource("1_setor")
@@ -13,6 +14,8 @@ numero = 1
 nome = "Recepção"
 perimetro = 3000.0
 posicao_mapa = Vector2(1.0, 0.0)
+ambiente = 0
+tom = Color(1.0, 0.98, 0.93, 1)
 
 [node name="Porta02" parent="." instance=ExtResource("2_porta")]
 position = Vector2(240.0, 0.0)
@@ -39,3 +42,24 @@ destino = 3
 [node name="ElevadorDeServico" parent="." instance=ExtResource("6_elevador")]
 position = Vector2(2650.0, 0.0)
 rotulo = "Elevador de serviço"
+
+[node name="Recepcionista" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(470.0, 0.0)
+papel = 2
+camisa = Color(0.62, 0.30, 0.34, 1)
+cabelo = Color(0.12, 0.10, 0.10, 1)
+pele = Color(0.86, 0.68, 0.55, 1)
+fase = 0.7
+falas = PackedStringArray("Bom dia. Ou boa noite, já perdi a conta.", "Hoje tô muito cansada desse trabalho.", "Alguém viu minha caneta? Era a boa.", "Mais um café e eu aguento.", "Elevador de serviço? Não sei de nada.")
+
+[node name="Visitante" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(1430.0, 0.0)
+papel = 0
+alcance = 150.0
+camisa = Color(0.33, 0.50, 0.40, 1)
+calca = Color(0.30, 0.28, 0.26, 1)
+cabelo = Color(0.35, 0.25, 0.15, 1)
+pele = Color(0.68, 0.50, 0.38, 1)
+falas = PackedStringArray("Será que é por aqui o RH?", "Eu só vim entregar um documento...", "Tem mais corredor do que eu lembrava.", "Será que me esqueceram aqui?")

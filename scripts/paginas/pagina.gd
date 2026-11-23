@@ -21,6 +21,12 @@ func ao_abrir(_movel: Movel) -> void:
 	pass
 
 
+# Página que lê o teclado (um jogo de digitar, por exemplo) devolve true
+# enquanto precisa das letras. O Overlay, que fecha com E, deixa o E passar.
+func captura_teclado() -> bool:
+	return false
+
+
 # O marco 3 é o momento em que dois móveis de setores diferentes
 # se revelam parte do mesmo enigma.
 func _checar_cruzamento() -> void:

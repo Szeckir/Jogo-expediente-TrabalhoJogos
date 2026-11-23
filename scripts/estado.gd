@@ -115,6 +115,12 @@ func ganhar_fichas(n: int) -> void:
 	Audio.tocar("ficha")
 
 
+# Prêmio do Termo: o terminal volta a aceitar partidas do zero.
+func recuperar_partidas() -> void:
+	partidas_terminal = 0
+	aviso.emit("Tentativas do terminal recuperadas.")
+
+
 func marcar_examinado(setor: int, rotulo: String) -> void:
 	examinados[str(setor) + ":" + rotulo] = true
 	mapa_mudou.emit()

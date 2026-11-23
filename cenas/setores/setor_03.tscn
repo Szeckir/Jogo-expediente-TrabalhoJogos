@@ -4,29 +4,89 @@
 [ext_resource type="PackedScene" path="res://cenas/movel/porta.tscn" id="2_porta"]
 [ext_resource type="PackedScene" path="res://cenas/movel/armario.tscn" id="3_armario"]
 [ext_resource type="PackedScene" path="res://cenas/movel/mesa.tscn" id="4_mesa"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="9_npc"]
+[ext_resource type="Script" path="res://scripts/decor.gd" id="10_decor"]
 
 [node name="Setor03" type="Node2D"]
 script = ExtResource("1_setor")
 numero = 3
 nome = "Armários"
-perimetro = 2400.0
+perimetro = 3200.0
 posicao_mapa = Vector2(2.0, 0.0)
+ambiente = 2
+tom = Color(0.97, 0.95, 0.88, 1)
 
 [node name="Porta01" parent="." instance=ExtResource("2_porta")]
-position = Vector2(260.0, 0.0)
+position = Vector2(300.0, 0.0)
 rotulo = "Porta 01"
 destino = 1
 
 [node name="Armario14" parent="." instance=ExtResource("3_armario")]
-position = Vector2(900.0, 0.0)
+position = Vector2(1000.0, 0.0)
 rotulo = "Armário 14"
 
 [node name="Mesa" parent="." instance=ExtResource("4_mesa")]
-position = Vector2(1440.0, 0.0)
+position = Vector2(1700.0, 0.0)
 rotulo = "Mesa"
 
 [node name="Porta06" parent="." instance=ExtResource("2_porta")]
-position = Vector2(1980.0, 0.0)
+position = Vector2(2300.0, 0.0)
 rotulo = "Porta 06"
 destino = 6
 exige_chave = true
+
+[node name="Porta05" parent="." instance=ExtResource("2_porta")]
+position = Vector2(2900.0, 0.0)
+rotulo = "Porta 05"
+destino = 5
+
+[node name="Extintor" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(440.0, 0.0)
+tipo = 7
+semente = 5
+
+[node name="Copiadora" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(1250.0, 0.0)
+tipo = 11
+semente = 6
+
+[node name="Lixeira" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(1400.0, 0.0)
+tipo = 8
+semente = 7
+
+[node name="PlantaA" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(2000.0, 0.0)
+tipo = 12
+semente = 8
+
+[node name="PlantaB" type="Node2D" parent="."]
+script = ExtResource("10_decor")
+position = Vector2(3150.0, 0.0)
+tipo = 12
+semente = 9
+
+[node name="Arquivista" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(1560.0, 0.0)
+papel = 0
+alcance = 90.0
+camisa = Color(0.45, 0.45, 0.50, 1)
+calca = Color(0.20, 0.22, 0.25, 1)
+cabelo = Color(0.62, 0.62, 0.60, 1)
+pele = Color(0.79, 0.61, 0.49, 1)
+falas = PackedStringArray("Armário 14... ou 41? Sempre confundo.", "Papel demais pra pouco espaço.", "Já organizei isso três vezes.", "Ninguém mais arquiva direito.")
+
+[node name="Funcionario" type="Node2D" parent="."]
+script = ExtResource("9_npc")
+position = Vector2(2560.0, 0.0)
+papel = 2
+camisa = Color(0.55, 0.62, 0.45, 1)
+cabelo = Color(0.30, 0.20, 0.12, 1)
+pele = Color(0.72, 0.54, 0.42, 1)
+fase = 1.3
+falas = PackedStringArray("Quem é que arquiva isso sem etiqueta?", "Hoje tô muito cansado desses armários.", "Mais um formulário em três vias...", "Se eu achar o 14, ganho o dia.")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/paginas/pagina_terminal.gd" id="1_pagina_terminal"]
 [ext_resource type="PackedScene" path="res://cenas/ui/forma.tscn" id="2_forma"]
 [ext_resource type="PackedScene" path="res://cenas/ui/fluxo.tscn" id="3_fluxo"]
+[ext_resource type="PackedScene" path="res://cenas/ui/termo.tscn" id="4_termo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modelo"]
 content_margin_left = 14.0
@@ -38,6 +39,20 @@ theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
 theme_override_font_sizes/font_size = 15
 text = "COTA DIÁRIA ATINGIDA. O terminal não aceita mais partidas hoje."
 autowrap_mode = 3
+
+[node name="Saida" type="Label" parent="Cota"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 13
+text = "Dá para recuperar as tentativas: acerte a palavra de uma rodada de Termo e a cota volta ao começo."
+autowrap_mode = 3
+
+[node name="Recuperar" type="Button" parent="Cota"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 36.0)
+text = "Recuperar tentativas"
 
 [node name="Intro" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -271,3 +286,47 @@ unique_name_in_owner = true
 layout_mode = 2
 custom_minimum_size = Vector2(0.0, 36.0)
 text = "Voltar"
+
+[node name="Recuperacao" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 8
+
+[node name="Termo" parent="Recuperacao" instance=ExtResource("4_termo")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DesistirTermo" type="Button" parent="Recuperacao"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 30.0)
+text = "Desistir"
+
+[node name="Recuperada" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="Recuperada"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "TENTATIVAS RECUPERADAS."
+autowrap_mode = 3
+
+[node name="Aviso" type="Label" parent="Recuperada"]
+layout_mode = 2
+custom_minimum_size = Vector2(560.0, 0.0)
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1.0)
+theme_override_font_sizes/font_size = 15
+text = "O terminal voltou a aceitar partidas."
+autowrap_mode = 3
+
+[node name="VoltarRecuperada" type="Button" parent="Recuperada"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0.0, 36.0)
+text = "Voltar ao terminal"

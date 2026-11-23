@@ -68,6 +68,10 @@ func entrar_no_setor(numero: int, entrada_x: float) -> void:
 	Estado.visitados[numero] = true
 	Estado.mapa_mudou.emit()
 
+	# o clima do setor: a tinta pega o cenário inteiro e, mais de leve, os móveis
+	_cenario.definir_tom(_setor.tom)
+	_mundo.modulate = Color.WHITE.lerp(_setor.tom, 0.6)
+
 	_hud.definir_setor(numero, _setor.nome)
 	_mapa.definir_setor(numero)
 	_posicionar()

@@ -13,10 +13,16 @@ const PAGINA_DOCUMENTO := preload("res://cenas/paginas/pagina_documento.tscn")
 @onready var _titulo: Label = %Titulo
 @onready var _conteudo: VBoxContainer = %Conteudo
 
+var _pagina: Pagina = null
+
 
 # ESC fecha. E também fecha: é a mesma tecla que abriu.
 func _input(event: InputEvent) -> void:
 	if not visible:
+		return
+	# página que está lendo o teclado fica com o E; o ESC fecha sempre
+	if event is InputEventKey and event.keycode == KEY_E \
+			and _pagina != null and _pagina.captura_teclado():
 		return
 	if event is InputEventKey and event.pressed and not event.echo \
 			and (event.keycode == KEY_ESCAPE or event.keycode == KEY_E):
@@ -62,5 +68,6 @@ func _mostrar(pagina: Pagina, movel: Movel) -> Pagina:
 	visible = true
 
 	_conteudo.add_child(pagina)
+	_pagina = pagina
 	pagina.ao_abrir(movel)
 	return pagina
